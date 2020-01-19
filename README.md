@@ -1,2 +1,2 @@
-# networking
-java network &amp;&amp; threading katas
+# network && threading
+java networking &amp;&amp threading

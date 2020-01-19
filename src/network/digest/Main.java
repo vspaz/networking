@@ -1,4 +1,4 @@
-import digest.DigestThread;
+package digest;
 
 import java.util.ArrayList;
 import java.util.List;
