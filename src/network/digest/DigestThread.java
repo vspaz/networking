@@ -17,7 +17,7 @@ public class DigestThread extends Thread {
             FileInputStream in = new FileInputStream(fileName);
             MessageDigest sha = MessageDigest.getInstance("SHA-256");
             DigestInputStream din = new DigestInputStream(in, sha);
-            while (din.read() != -1);
+            while (din.read() != -1);  // read in the whole file.
             din.close();
             String result = fileName + ":" + DatatypeConverter.printHexBinary(sha.digest());
             System.out.println(result);
