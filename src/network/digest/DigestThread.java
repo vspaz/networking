@@ -19,9 +19,7 @@ public class DigestThread extends Thread {
             DigestInputStream din = new DigestInputStream(in, sha);
             while (din.read() != -1);
             din.close();
-            StringBuilder result = new StringBuilder(fileName);
-            result.append(":");
-            result.append(DatatypeConverter.printHexBinary(sha.digest()));
+            String result = fileName + ":" + DatatypeConverter.printHexBinary(sha.digest());
             System.out.println(result);
         } catch (IOException | NoSuchAlgorithmException e) {
             System.err.println(e);

@@ -14,5 +14,11 @@ public class Main {
             Thread t = new DigestThread(file);
             t.start();
         }
+
+        for (String file : files) {
+            DigestRunnable digestRunnable = new DigestRunnable(file);
+            Thread digestThread = new Thread(digestRunnable);
+            digestThread.start();
+        }
     }
 }
