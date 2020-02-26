@@ -1,7 +1,7 @@
 package counting;
 
 class Counter {
-    private int count = 0;
+    int count = 0;
 
     public void increment() {
         count++;
