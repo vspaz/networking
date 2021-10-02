@@ -1,11 +1,14 @@
 package digestcallback;
 
-import java.io.*;
-import java.security.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.security.DigestInputStream;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class InstanceCallbackDigest implements Runnable {
-    private String filename;
-    private InstanceCallbackDigestUserInterface callback;
+    private final String filename;
+    private final InstanceCallbackDigestUserInterface callback;
 
     public InstanceCallbackDigest(String filename, InstanceCallbackDigestUserInterface callback) {
         this.filename = filename;
@@ -18,7 +21,7 @@ public class InstanceCallbackDigest implements Runnable {
             FileInputStream in = new FileInputStream(filename);
             MessageDigest sha = MessageDigest.getInstance("SHA-256");
             DigestInputStream din = new DigestInputStream(in, sha);
-            while (din.read() != -1);
+            while (din.read() != -1) ;
             din.close();
             byte[] digest = sha.digest();
             this.callback.recieveDigest(digest);

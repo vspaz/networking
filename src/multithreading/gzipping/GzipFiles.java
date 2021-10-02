@@ -1,7 +1,7 @@
 package gzipping;
 
-import java.nio.file.Paths;
 import java.io.File;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;

@@ -1,7 +1,7 @@
 package gzipping;
 
 import java.io.*;
-import java.util.zip.*;
+import java.util.zip.GZIPOutputStream;
 
 public class GzipRunnable implements Runnable {
 
@@ -17,16 +17,15 @@ public class GzipRunnable implements Runnable {
             File out = new File(input.getParent(), input.getName() + ".gz");
             if (!out.exists()) {
                 try (
-                    InputStream in = new BufferedInputStream(new FileInputStream(input));
-                    OutputStream output = new BufferedOutputStream(new GZIPOutputStream(new FileOutputStream(out)));
+                        InputStream in = new BufferedInputStream(new FileInputStream(input));
+                        OutputStream output = new BufferedOutputStream(new GZIPOutputStream(new FileOutputStream(out)))
 
                 ) {
                     int b;
                     while ((b = in.read()) != -1) {
                         output.write(b);
                     }
-                }
-                catch (IOException e) {
+                } catch (IOException e) {
                     System.err.println(e);
                 }
             }

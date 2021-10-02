@@ -1,12 +1,15 @@
 package digest;
 
-import java.io.*;
-import java.security.*;
 import javax.xml.bind.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.security.DigestInputStream;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class DigestRunnable implements Runnable {
 
-    private String filename;
+    private final String filename;
 
     public DigestRunnable(String filename) {
         this.filename = filename;
@@ -18,7 +21,7 @@ public class DigestRunnable implements Runnable {
             FileInputStream in = new FileInputStream(filename);
             MessageDigest sha = MessageDigest.getInstance("SHA-256");
             DigestInputStream din = new DigestInputStream(in, sha);
-            while (din.read() != -1);
+            while (din.read() != -1) ;
             din.close();
             byte[] digest = sha.digest();
 
