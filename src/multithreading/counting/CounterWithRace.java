@@ -1,4 +1,4 @@
-package counting;
+package multithreading.counting;
 
 public class CounterWithRace {
   public static void main(String[] args) {

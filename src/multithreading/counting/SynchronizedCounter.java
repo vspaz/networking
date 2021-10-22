@@ -1,4 +1,4 @@
-package counting;
+package multithreading.counting;
 
 public class SynchronizedCounter extends Counter {
 

@@ -1,4 +1,4 @@
-package counting;
+package multithreading.counting;
 
 class Worker extends Thread {
   Counter counter;
