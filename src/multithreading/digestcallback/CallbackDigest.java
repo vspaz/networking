@@ -1,4 +1,4 @@
-package digestcallback;
+package multithreading.digestcallback;
 
 import java.io.FileInputStream;
 import java.io.IOException;

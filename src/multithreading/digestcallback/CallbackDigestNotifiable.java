@@ -1,4 +1,4 @@
-package digestcallback;
+package multithreading.digestcallback;
 
 import javax.xml.bind.DatatypeConverter;
 import java.nio.file.Paths;

@@ -1,6 +1,6 @@
-package digest;
+package multithreading.digest;
 
-import javax.xml.bind.*;
+import javax.xml.bind.DatatypeConverter;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.DigestInputStream;

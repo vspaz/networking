@@ -1,4 +1,4 @@
-package addresses;
+package addressing.addresses;
 
 import java.io.IOException;
 import java.net.InetAddress;
