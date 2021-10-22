@@ -6,38 +6,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InstanceCallbackDigestUserInterface {
-    private final String filename;
-    private byte[] digest;
+  private final String filename;
+  private byte[] digest;
 
-    public InstanceCallbackDigestUserInterface(String filename) {
-        this.filename = filename;
+  public InstanceCallbackDigestUserInterface(String filename) {
+    this.filename = filename;
+  }
+
+  public static void main(String[] args) {
+    List<String> files = new ArrayList<>();
+    String path = Paths.get(".").toAbsolutePath().normalize().toString();
+    files.add(path + "/digest/foo.txt");
+    files.add(path + "/digest/bar.txt");
+
+    for (String file : files) {
+      InstanceCallbackDigestUserInterface digest = new InstanceCallbackDigestUserInterface(file);
+      digest.calculateDigest();
     }
+  }
 
-    public static void main(String[] args) {
-        List<String> files = new ArrayList<>();
-        String path = Paths.get(".").toAbsolutePath().normalize().toString();
-        files.add(path + "/digest/foo.txt");
-        files.add(path + "/digest/bar.txt");
+  public void calculateDigest() {
+    InstanceCallbackDigest cb = new InstanceCallbackDigest(filename, this);
+    Thread t = new Thread(cb);
+    t.start();
+  }
 
-        for (String file : files) {
-            InstanceCallbackDigestUserInterface digest = new InstanceCallbackDigestUserInterface(file);
-            digest.calculateDigest();
-        }
-    }
+  void recieveDigest(byte[] digest) {
+    this.digest = digest;
+    System.err.println(this);
+  }
 
-    public void calculateDigest() {
-        InstanceCallbackDigest cb = new InstanceCallbackDigest(filename, this);
-        Thread t = new Thread(cb);
-        t.start();
-    }
-
-    void recieveDigest(byte[] digest) {
-        this.digest = digest;
-        System.err.println(this);
-    }
-
-    @Override
-    public String toString() {
-        return filename + ":" + DatatypeConverter.printHexBinary(digest);
-    }
+  @Override
+  public String toString() {
+    return filename + ":" + DatatypeConverter.printHexBinary(digest);
+  }
 }

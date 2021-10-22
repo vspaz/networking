@@ -1,13 +1,13 @@
 package multithreading.counting;
 
 class Counter {
-    int count = 0;
+  int count = 0;
 
-    public void increment() {
-        count++;
-    }
+  public void increment() {
+    count++;
+  }
 
-    public int getCount() {
-        return count;
-    }
+  public int getCount() {
+    return count;
+  }
 }
