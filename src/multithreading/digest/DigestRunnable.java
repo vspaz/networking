@@ -21,8 +21,7 @@ public class DigestRunnable implements Runnable {
       FileInputStream in = new FileInputStream(filename);
       MessageDigest sha = MessageDigest.getInstance("SHA-256");
       DigestInputStream din = new DigestInputStream(in, sha);
-      while (din.read() != -1)
-        ;
+      while (din.read() != -1);
       din.close();
       byte[] digest = sha.digest();
 
